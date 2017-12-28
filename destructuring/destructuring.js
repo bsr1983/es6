@@ -46,3 +46,72 @@ log(sixth);
 
 let [foo1=true]=[];
 log(foo1);
+
+let {bar2,foo2}={foo2:"foo2",bar2:"bar"};
+log(foo2);
+
+let{foo2:obc}={foo2:"foo2",bar3:"bar3"};
+
+log(obc);
+
+let obj = {p1:['Hello',{y1:'world'}]};
+let {p1,p1:[x1,{y1}]}=obj;
+log(x1);
+log(y1);
+log(p1);
+
+let x2=1;
+let y2=2;
+[x2,y2]=[y2,x2];
+
+log("x2="+x2+" y2="+y2);
+
+function returnMultiValue()
+{
+    return [1,2,3];
+}
+let[x3,y3,z3]=returnMultiValue();
+log("x3="+x3+" y3="+y3+" z3="+z3);
+
+function returnObjectValue()
+{
+    return {x4:1,y4:2}
+}
+
+let {x4,y4}=returnObjectValue();
+log("x4="+x4+" y4="+y4);
+
+function setValueByEp([x5,y5,z5]){
+    log("x5="+x5+" y5="+y5+" z5="+z5);
+}
+setValueByEp([1,2,3]);
+
+function setValueByEp2({x5,y5,z5}){
+    log("x5="+x5+" y5="+y5+" z5="+z5);
+}
+setValueByEp2({x5:1,z5:3,y5:2});
+
+let jsonData ={
+    x6:1,
+    y6:"some str value",
+    z6:[111,222]
+};
+let{x6,y6,z6} = jsonData;
+log("x6="+x6+" y6="+y6+" z6="+z6);
+
+const map=new Map();
+map.set('x7','some str value');
+map.set('y7',111);
+map.set('z7',[11,222]);
+for(let [key,value] of map)
+{
+    log("key="+key+" value="+value);
+}
+for(let [key] of map)
+{
+    log("key="+key);
+}
+for(let [,value] of map)
+{
+    log("value="+value);
+}
