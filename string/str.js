@@ -83,3 +83,63 @@ log('x'.padStart(5,'ab'));
 log('x'.padStart(4,'ab'));
 
 log('xxx'.padStart(2,'ab'));
+
+log('1'.padStart(10,'0'));
+log('12'.padStart(10,'0'));
+log('123456'.padStart(10,'0'));
+
+log('12'.padStart(10,'YYYY-MM-DD'));
+log('09-12'.padStart(10,'YYYY-MM-DD'));
+
+log(`In JavaScript '\n' is a line-feed.`);
+log(`In JavaScript this 
+is not legal.`);
+log(`string text line 1
+string text line 2`);
+let name1 = "Bob",time = "today";
+log(`Hello ${name1},how are you ${time}?`);
+let greeting = `\`Yo\` World!`;
+log(greeting);
+log(`
+<ul>
+    <li>first</li>
+    <li>second</li>
+</ul>`);
+log(`
+<ul>
+    <li>first</li>
+    <li>second</li>
+</ul>`.trim());
+
+let x11 =1;
+let y11 =2;
+log(`${x11} + ${y11} = ${x11+y11}`);
+log(`${x11} + ${y11*2} = ${x11+y11*2}`);
+let obj11 = {x:11,y:22};
+log(`${obj11.x+obj11.y}`);
+
+function fnstr()
+{
+    return "SomeThingToShow";
+}
+log(`this is from function ${fnstr()}`);
+
+const tmpl= addrs => `
+    <table>
+    ${addrs.map(addr => `
+    <tr><td>${addr.first}</td></tr>
+    <tr><td>${addr.last}</td></tr>
+    `).join('')}
+    </table>
+`;
+const tmpldata = [
+    { first:'<Jane>',last:'Bond'},
+    { first:'Lars',last:'<Croft>'}
+];
+log(tmpl(tmpldata));
+
+//alert `123`;
+//alert('123');
+
+let a12 =5,b12=10;
+//log(tag`Hello ${a12+b12} world ${a*b}`);
