@@ -143,3 +143,22 @@ log(tmpl(tmpldata));
 
 let a12 =5,b12=10;
 //log(tag`Hello ${a12+b12} world ${a*b}`);
+function SaferHTML(templateData) {
+    let s=templateData[0];
+    for (let i=1;i<arguments.length;i++){
+        let arg = String(arguments[i]);
+        s+= arg.replace(/&/g,"amp;")
+            .replace(/</g,"&lt;")
+            .replace(/>/g,"&gt;");
+        s+= templateData[i];
+    }
+    return s;
+}
+let sender ="<script>alert('abc');</script>"
+let message = SaferHTML`<p>${sender} has send you a message.</p>p>`;
+log(message);
+
+log(String.raw`Hi\n${2+3}!`);
+log(String.raw`Hi\u000A!`);
+log(String.raw({raw:'test'},0,1,2));
+log(String.raw({raw:['t','e','s','t']},0,1,2));
