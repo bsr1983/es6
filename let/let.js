@@ -148,3 +148,8 @@ log(window.a);//in brower env is 1,in node js is undefine
 
 let somevalue=2;
 log(window.somevalue);
+
+function print()
+{
+
+}

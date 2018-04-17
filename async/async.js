@@ -20,7 +20,7 @@ const asybcReadFile = async function()
 
 async function af()
 {
-    return 'hell async function!';
+    return 'hello async function!';
 }
 async function ef()
 {
@@ -30,3 +30,47 @@ af().then(v=>console.log(v));
 
 ef().then(v=>console.log(v),  e=>console.error(e));
 
+async function ff()
+{
+    await new Promise(function (resolve, reject) {
+        throw new Error('some exception!');
+    })
+}
+
+ff().then(value => console.log(value))
+    .catch(e=>console.error(e));
+
+async function bf()
+{
+    try{
+        await new Promise(function (resolve, reject) {
+            throw new Error("some exception!");
+        })
+    }catch (e)
+    {
+        
+    }
+    return await ('hello async function! ooooo');
+}
+
+bf().then(value => console.log(value))
+    .catch(e=>console.error(e));
+
+const superagent = require('superagent');
+const NUM_RETRIES = 3;
+
+async function test() {
+    let i;
+    for (i = 0; i < NUM_RETRIES; ++i) {
+        try {
+            await superagent.get('http://www.baidu.com');
+            break;
+        } catch(err) {
+            console.log(err)
+        }
+    }
+    console.log(i); // 3
+}
+
+test().then(value => console.log(value))
+    .catch(e=>console.error(e));

@@ -66,3 +66,5 @@ var mapdata=new Map([
     [1112,3]
 ]);
 console.log(mapdata);
+
+console.log([...'hello world']);
