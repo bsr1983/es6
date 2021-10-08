@@ -1,35 +1,34 @@
-function log(str)
-{
+function log(str) {
     console.log(str);
 }
-console.log(...[1,2,3]);
+console.log(...[1, 2, 3]);
 
-const a1 = [1,2];
-const a2 =a1;
+const a1 = [1, 2];
+const a2 = a1;
 
 a2.push(3);
 
 console.log(a1);
 console.log(a2);
 
-const a3 = [1,2,3];
+const a3 = [1, 2, 3];
 const a4 = [...a3];
 a4.push(4);
 log(a3);
 log(a4);
 
-var arr1=['a','b'];
-var arr2=['c','d'];
-var arr3=['e','f','g'];
+var arr1 = ['a', 'b'];
+var arr2 = ['c', 'd'];
+var arr3 = ['e', 'f', 'g'];
 
-log([...arr1,...arr2,...arr3]);
+log([...arr1, ...arr2, ...arr3]);
 
-const [f,...r]=[1,2,3,4,5];
+const [f, ...r] = [1, 2, 3, 4, 5];
 
 log(f);
 log(r);
 
-const [f1,...r1]=[];
+const [f1, ...r1] = [];
 log(f1);
 log(r1);
 
@@ -43,28 +42,44 @@ log(length('x\uD83D\uDE80y'));
 
 log('x\uD83D\uDE80y'.length);
 
-let str='x\uD83D\uDE80y';
+let str = 'x\uD83D\uDE80y';
 log(str.split('').reverse().join(''));
 log([...str].reverse().join(''));
 
 let map = new Map([
-    [1,'one'],
-    [2,'two'],
-    [3,'three']
+    [1, 'one'],
+    [2, 'two'],
+    [3, 'three']
 ]);
 
 let arr = [...map.keys()];
 
-log(arr+' '+[...map.values()]);
+log(arr + ' ' + [...map.values()]);
 
-let arrayLike ={'0':'a','1':'b','2':'c',length:3};
+let arrayLike = { '0': 'a', '1': 'b', '2': 'c', length: 3 };
 
 log(Array.from(arrayLike));
 
-var mapdata=new Map([
-    [1111,2],
-    [1112,3]
+var mapdata = new Map([
+    [1111, 2],
+    [1112, 3]
 ]);
 console.log(mapdata);
 
 console.log([...'hello world']);
+
+var array1 = [{ "message1": { "id": 1, "text": "sss" }}, 
+{"message2": { "id": 2, "text": "sss" }},
+ {"message3": { "id": 3, "text": "sss" } }];
+var array2 =[{ "message1": { "id": 1, "text": "sss" }}, 
+{"message2": { "id": 4, "text": "sss" }},
+ {"message3": { "id": 5, "text": "sss" } }];
+let union = array1.concat(array2.filter(function (o) { 
+    for (var o1 of array1) 
+    { 
+        if (o1.id == o.id) 
+        { return false;  }
+         return true; 
+        }
+ }));
+console.log(JSON.stringify(union));
